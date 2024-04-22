@@ -252,6 +252,10 @@ end
 
 -- TODO: deprecate this in nvim-0.11 or use strict lists
 --- Determine which list-check function to use
-M.is_list = vim.tbl_isarray or vim.tbl_islist
+if vim.fn.has("nvim-0.10") == 1 then
+  M.is_list = vim.isarray or vim.islist
+else
+  M.is_list = vim.tbl_isarray or vim.tbl_islist
+end
 
 return M
